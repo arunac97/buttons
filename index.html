@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">(function(w,s){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="https://d2x98wp00fzbc2.cloudfront.net/js/hi/6985088bf14d4c7790194ac74c852c77.js";var x=document.getElementsByTagName("script")[0];x.parentNode.insertBefore(e,x);})(window,"script");</script>
+<title>Responsive Buttons</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+
+  .child-container {
+    border: 2px solid pink;
+  }
+
+  .container {
+    max-width: 100%;
+    max-height: 450px;
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 3px solid red;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .button {
+    width: 110px;
+    height: 50px;
+    background-color: green;
+    color: white;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+<script>
+  window.onload = ()=>{
+    function createButton(name,id) {
+    const button = document.createElement('button');
+    button.className = 'button';
+    button.id = id
+    button.textContent = name;
+    return button;
+  }
+  const noOfChildDIv = 20
+
+  for (let i = 0; i < noOfChildDIv; i++) {
+    let div = document.createElement('div');
+    div.className = "container";
+    const buttonNames = ["Button 1", "Button 2", "Button 3", "Button 4", "Button 5", "Button 6"];
+      for (let j = 0; j < 6; j += 2) {
+        const row = document.createElement('div');
+        row.className = 'row';
+        const button1 = createButton(buttonNames[j],`${buttonNames[j]}${i}${j}`);
+        const button2 = createButton(buttonNames[j + 1],`${buttonNames[j]}${i}${j+1}`);
+        row.appendChild(button1);
+        row.appendChild(button2);
+        div.appendChild(row);
+      }
+      console.log(div)
+      if(i % 2 == 0) {
+        div.style.backgroundColor="white";
+      }
+      document.getElementById('parent-container').appendChild(div)
+  }
+  }
+</script>
+</head>
+<body>
+  <div id="parent-container"></div>  
+</body>
+</html>
